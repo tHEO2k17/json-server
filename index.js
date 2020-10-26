@@ -1,11 +1,26 @@
 const express = require("express");
+const mongoose = require("mongoose");
+const { MONGO_URI } = require("./config");
+
+const propertiesRoutes = require("./routes/properties");
+
 const app = express();
-let port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.send("Hello");
-});
+app.use(express.json());
 
-app.listen(port, () => {
-  console.log(`App is running on port: ${port}`);
+//Connect to MONGODB
+mongoose
+  .connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Mongo connected"))
+  .catch((error) => console.log(error));
+
+app.use("/api/properties", propertiesRoutes);
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`App is running on port: ${PORT}`);
 });

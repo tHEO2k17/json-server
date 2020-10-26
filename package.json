@@ -4,13 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon index",
     "json:server": "json-server --watch db.json"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "json-server": "^0.16.2",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.9.19"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   },
   "engines": {
     "node": "12.18.1"
