@@ -25,14 +25,14 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.get("/:security_code", async (req, res) => {
-  // try {
-  //   const properties = await Properties.find();
-  //   if (!properties) throw Error("No properties found");
-  //   res.status(200).json(properties);
-  // } catch (err) {
-  //   res.status(400).json({ msg: err });
-  // }
+router.get("/security_code/:security_code", async (req, res) => {
+  try {
+    const properties = await Properties.findOne({security_code: req.params.security_code});
+    if (!properties) throw Error("No properties found");
+    res.status(200).json(properties);
+  } catch (err) {
+    res.status(400).json({ msg: err });
+  }
 });
 
 router.delete("/:id", async (req, res) => {
