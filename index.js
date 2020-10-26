@@ -1,11 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const { MONGO_URI } = require("./config");
 
 const propertiesRoutes = require("./routes/properties");
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 //Connect to MONGODB
