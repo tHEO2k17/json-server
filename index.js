@@ -4,6 +4,7 @@ const cors = require("cors");
 const { MONGO_URI } = require("./config");
 
 const propertiesRoutes = require("./routes/properties");
+const authRoutes = require("./routes/auth");
 
 const app = express();
 
@@ -20,6 +21,7 @@ mongoose
   .catch((error) => console.log(error));
 
 app.use("/api/properties", propertiesRoutes);
+app.use("/api/auth", authRoutes);
 
 const PORT = process.env.PORT || 3000;
 
