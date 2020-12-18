@@ -27,7 +27,7 @@ router.get("/:id", async (req, res) => {
 
 router.get("/security_code/:security_code", async (req, res) => {
   try {
-    const properties = await Properties.findOne({security_code: req.params.security_code});
+    const properties = await Properties.findOne({security_code: req.params.security_code.toUpperCase()});
     if (!properties) throw Error("No properties found");
     res.status(200).json(properties);
   } catch (err) {
